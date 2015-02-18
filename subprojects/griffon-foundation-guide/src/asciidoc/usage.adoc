@@ -1,0 +1,68 @@
+
+[[_usage]]
+= Usage
+
+== Swing
+
+The `griffon-foundation-swing:{project-version}` JAR provides a new Icon class: `{api_link_foundation_icon_swing}`.
+You may use this class with any Swing component that supports an Icon property.
+
+== JavaFX
+
+The `griffon-foundation-javafx:{project-version}` JAR provides a new Node class: `{api_link_foundation_icon_javafx}`.
+You may use this class with any JavaFX control that accepts a graphic property. You may also use the icon directly as
+it is a subclass of `javafx.scene.control.Label`. The icon class can be used inside an FXML file too.
+
+[source,xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.GridPane?>
+<?import griffon.javafx.support.foundation.FoundationIcon?>
+
+<GridPane prefHeight="60.0" prefWidth="200.0"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="org.example.AppController">
+    <children>
+        <Button fx:id="preferencesActionTarget"
+                GridPane.columnIndex="0" GridPane.rowIndex="0"
+                mnemonicParsing="false"
+                prefWidth="200.0">
+            <graphic>
+                <FoundationIcon foundation="FI_STAR"/>
+            </graphic>
+        </Button>
+    </children>
+</GridPane>
+----
+
+The JavaFX icon requires the usage of the `Foundation` enum value.
+
+== Action Resources
+
+Action icons can be set using resources files if the following format is used:
+
+[source]
+----
+iconClassName|name:size:color
+----
+
+`size` and `color` are optional.
+
+Here's an example using the Swing icon
+
+[source,java]
+.griffon-app/i18n/messages.properties
+----
+org.example.AppController.action.Preferences.icon=griffon.swing.support.foundation.FoundationIcon|fi-star
+----
+
+The JavaFX version for the same icon value is
+
+[source,java]
+.griffon-app/i18n/messages.properties
+----
+org.example.AppController.action.Preferences.icon=griffon.javafx.support.foundation.FoundationIcon|fi-star
+----
+

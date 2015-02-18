@@ -1,0 +1,5 @@
+
+:link_foundation: link:http://zurb.com/playground/foundation-icon-fonts-3[Zurb's Foundation Icon Fonts 3, window="_blank"]
+:api_link_foundation_icon_javafx: link:api/griffon/javafx/support/foundation/FoundationIcon.html[griffon.javafx.support.foundation.FoundationIcon, window="_blank"]
+:api_link_foundation_icon_swing: link:api/griffon/swing/support/foundation/FoundationIcon.html[griffon.swing.support.foundation.FoundationIcon, window="_blank"]
+

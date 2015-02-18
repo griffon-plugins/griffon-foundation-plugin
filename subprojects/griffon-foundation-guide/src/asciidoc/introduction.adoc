@@ -1,0 +1,9 @@
+
+[[_introduction]]
+= Introduction
+
+{link_foundation} gives you scalable vector icons that can instantly be customized.
+This plugin enables toolkit specific icon support.
+
+Currently supported Foundation version is `{foundation-version}`.
+

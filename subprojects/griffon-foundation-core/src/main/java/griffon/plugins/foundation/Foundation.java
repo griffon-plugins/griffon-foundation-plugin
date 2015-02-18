@@ -1,0 +1,351 @@
+/*
+ * Copyright 2014-2015 the original author or authors.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+package griffon.plugins.foundation;
+
+import javax.annotation.Nonnull;
+
+import static griffon.util.GriffonNameUtils.requireNonBlank;
+
+/**
+ * @author Andres Almiray
+ */
+public enum Foundation {
+    // last is f21a
+    FI_ADDRESS_BOOK("fi-address-book", '\uf100'),
+    FI_ALERT("fi-alert", '\uf101'),
+    FI_ALIGN_CENTER("fi-align-center", '\uf102'),
+    FI_ALIGN_JUSTIFY("fi-align-justify", '\uf103'),
+    FI_ALIGN_LEFT("fi-align-left", '\uf104'),
+    FI_ALIGN_RIGHT("fi-align-right", '\uf105'),
+    FI_ANCHOR("fi-anchor", '\uf106'),
+    FI_ANNOTATE("fi-annotate", '\uf107'),
+    FI_ARCHIVE("fi-archive", '\uf108'),
+    FI_ARROW_DOWN("fi-arrow-down", '\uf109'),
+    FI_ARROW_LEFT("fi-arrow-left", '\uf10a'),
+    FI_ARROW_RIGHT("fi-arrow-right", '\uf10b'),
+    FI_ARROW_UP("fi-arrow-up", '\uf10c'),
+    FI_ARROWS_COMPRESS("fi-arrows-compress", '\uf10d'),
+    FI_ARROWS_EXPAND("fi-arrows-expand", '\uf10e'),
+    FI_ARROWS_IN("fi-arrows-in", '\uf10f'),
+    FI_ARROWS_OUT("fi-arrows-out", '\uf110'),
+    FI_ASL("fi-asl", '\uf111'),
+    FI_ASTERISK("fi-asterisk", '\uf112'),
+    FI_AT_SIGN("fi-at-sign", '\uf113'),
+    FI_BACKGROUND_COLOR("fi-background-color", '\uf114'),
+    FI_BATTERY_EMPTY("fi-battery-empty", '\uf115'),
+    FI_BATTERY_FULL("fi-battery-full", '\uf116'),
+    FI_BATTERY_HALF("fi-battery-half", '\uf117'),
+    FI_BITCOIN_CIRCLE("fi-bitcoin-circle", '\uf118'),
+    FI_BITCOIN("fi-bitcoin", '\uf119'),
+    FI_BLIND("fi-blind", '\uf11a'),
+    FI_BLUETOOTH("fi-bluetooth", '\uf11b'),
+    FI_BOLD("fi-bold", '\uf11c'),
+    FI_BOOK("fi-book", '\uf11e'),
+    FI_BOOKMARK("fi-bookmark", '\uf11f'),
+    FI_BRAILLE("fi-braille", '\uf120'),
+    FI_BURST_NEW("fi-burst-new", '\uf121'),
+    FI_BURST_SALE("fi-burst-sale", '\uf122'),
+    FI_BURST("fi-burst", '\uf123'),
+    FI_CALENDAR("fi-calendar", '\uf124'),
+    FI_CAMERA("fi-camera", '\uf125'),
+    FI_CHECK("fi-check", '\uf126'),
+    FI_CHECKBOX("fi-checkbox", '\uf127'),
+    FI_CLIPBOARD_NOTES("fi-clipboard-notes", '\uf128'),
+    FI_CLIPBOARD_PENCIL("fi-clipboard-pencil", '\uf129'),
+    FI_CLIPBOARD("fi-clipboard", '\uf12a'),
+    FI_CLOCK("fi-clock", '\uf12b'),
+    FI_CLOSED_CAPTION("fi-closed-caption", '\uf12c'),
+    FI_CLOUD("fi-cloud", '\uf12d'),
+    FI_COMMENT_MINUS("fi-comment-minus", '\uf12e'),
+    FI_COMMENT_QUOTES("fi-comment-quotes", '\uf12f'),
+    FI_COMMENT_VIDEO("fi-comment-video", '\uf130'),
+    FI_COMMENT("fi-comment", '\uf131'),
+    FI_COMMENTS("fi-comments", '\uf132'),
+    FI_COMPASS("fi-compass", '\uf133'),
+    FI_CONTRAST("fi-contrast", '\uf134'),
+    FI_CREDIT_CARD("fi-credit-card", '\uf135'),
+    FI_CROP("fi-crop", '\uf136'),
+    FI_CROWN("fi-crown", '\uf137'),
+    FI_CSS3("fi-css3", '\uf138'),
+    FI_DATABASE("fi-database", '\uf139'),
+    FI_DIE_FIVE("fi-die-five", '\uf13a'),
+    FI_DIE_FOUR("fi-die-four", '\uf13b'),
+    FI_DIE_ONE("fi-die-one", '\uf13c'),
+    FI_DIE_SIX("fi-die-six", '\uf13d'),
+    FI_DIE_THREE("fi-die-three", '\uf13e'),
+    FI_DIE_TWO("fi-die-two", '\uf13f'),
+    FI_DISLIKE("fi-dislike", '\uf140'),
+    FI_DOLLAR_BILL("fi-dollar-bill", '\uf141'),
+    FI_DOLLAR("fi-dollar", '\uf142'),
+    FI_DOWNLOAD("fi-download", '\uf143'),
+    FI_EJECT("fi-eject", '\uf144'),
+    FI_ELEVATOR("fi-elevator", '\uf145'),
+    FI_EURO("fi-euro", '\uf146'),
+    FI_EYE("fi-eye", '\uf147'),
+    FI_FAST_FORWARD("fi-fast-forward", '\uf148'),
+    FI_FEMALE_SYMBOL("fi-female-symbol", '\uf149'),
+    FI_FEMALE("fi-female", '\uf14a'),
+    FI_FILTER("fi-filter", '\uf14b'),
+    FI_FIRST_AID("fi-first-aid", '\uf14c'),
+    FI_FLAG("fi-flag", '\uf14d'),
+    FI_FOLDER_ADD("fi-folder-add", '\uf14e'),
+    FI_FOLDER_LOCK("fi-folder-lock", '\uf14f'),
+    FI_FOLDER("fi-folder", '\uf150'),
+    FI_FOOT("fi-foot", '\uf151'),
+    FI_FOUNDATION("fi-foundation", '\uf152'),
+    FI_GRAPH_BAR("fi-graph-bar", '\uf153'),
+    FI_GRAPH_HORIZONTAL("fi-graph-horizontal", '\uf154'),
+    FI_GRAPH_PIE("fi-graph-pie", '\uf155'),
+    FI_GRAPH_TREND("fi-graph-trend", '\uf156'),
+    FI_GUIDE_DOG("fi-guide-dog", '\uf157'),
+    FI_HEARING_AID("fi-hearing-aid", '\uf158'),
+    FI_HEART("fi-heart", '\uf159'),
+    FI_HOME("fi-home", '\uf15a'),
+    FI_HTML5("fi-html5", '\uf15b'),
+    FI_INDENT_LESS("fi-indent-less", '\uf15c'),
+    FI_INDENT_MORE("fi-indent-more", '\uf15d'),
+    FI_INFO("fi-info", '\uf15e'),
+    FI_ITALIC("fi-italic", '\uf15f'),
+    FI_KEY("fi-key", '\uf160'),
+    FI_LAPTOP("fi-laptop", '\uf161'),
+    FI_LAYOUT("fi-layout", '\uf162'),
+    FI_LIGHTBULB("fi-lightbulb", '\uf163'),
+    FI_LIKE("fi-like", '\uf164'),
+    FI_LINK("fi-link", '\uf165'),
+    FI_LIST_BULLET("fi-list-bullet", '\uf166'),
+    FI_LIST_NUMBER("fi-list-number", '\uf167'),
+    FI_LIST_THUMBNAILS("fi-list-thumbnails", '\uf168'),
+    FI_LIST("fi-list", '\uf169'),
+    FI_LOCK("fi-lock", '\uf16a'),
+    FI_LOOP("fi-loop", '\uf16b'),
+    FI_MAGNIFYING_GLASS("fi-magnifying-glass", '\uf16c'),
+    FI_MAIL("fi-mail", '\uf16d'),
+    FI_MALE_FEMALE("fi-male-female", '\uf16e'),
+    FI_MALE_SYMBOL("fi-male-symbol", '\uf16f'),
+    FI_MALE("fi-male", '\uf170'),
+    FI_MAP("fi-map", '\uf171'),
+    FI_MARKER("fi-marker", '\uf172'),
+    FI_MEGAPHONE("fi-megaphone", '\uf173'),
+    FI_MICROPHONE("fi-microphone", '\uf174'),
+    FI_MINUS_CIRCLE("fi-minus-circle", '\uf175'),
+    FI_MINUS("fi-minus", '\uf176'),
+    FI_MOBILE_SIGNAL("fi-mobile-signal", '\uf177'),
+    FI_MOBILE("fi-mobile", '\uf178'),
+    FI_MONITOR("fi-monitor", '\uf179'),
+    FI_MOUNTAINS("fi-mountains", '\uf17a'),
+    FI_MUSIC("fi-music", '\uf17b'),
+    FI_NEXT("fi-next", '\uf17c'),
+    FI_NO_DOGS("fi-no-dogs", '\uf17d'),
+    FI_NO_SMOKING("fi-no-smoking", '\uf17e'),
+    FI_PAGE_ADD("fi-page-add", '\uf17f'),
+    FI_PAGE_COPY("fi-page-copy", '\uf180'),
+    FI_PAGE_CSV("fi-page-csv", '\uf181'),
+    FI_PAGE_DELETE("fi-page-delete", '\uf182'),
+    FI_PAGE_DOC("fi-page-doc", '\uf183'),
+    FI_PAGE_EDIT("fi-page-edit", '\uf184'),
+    FI_PAGE_EXPORT_CSV("fi-page-export-csv", '\uf185'),
+    FI_PAGE_EXPORT_DOC("fi-page-export-doc", '\uf186'),
+    FI_PAGE_EXPORT_PDF("fi-page-export-pdf", '\uf187'),
+    FI_PAGE_EXPORT("fi-page-export", '\uf188'),
+    FI_PAGE_FILLED("fi-page-filled", '\uf189'),
+    FI_PAGE_MULTIPLE("fi-page-multiple", '\uf18a'),
+    FI_PAGE_PDF("fi-page-pdf", '\uf18b'),
+    FI_PAGE_REMOVE("fi-page-remove", '\uf18c'),
+    FI_PAGE_SEARCH("fi-page-search", '\uf18d'),
+    FI_PAGE("fi-page", '\uf18e'),
+    FI_PAINT_BUCKET("fi-paint-bucket", '\uf18f'),
+    FI_PAPERCLIP("fi-paperclip", '\uf190'),
+    FI_PAUSE("fi-pause", '\uf191'),
+    FI_PAW("fi-paw", '\uf192'),
+    FI_PAYPAL("fi-paypal", '\uf193'),
+    FI_PENCIL("fi-pencil", '\uf194'),
+    FI_PHOTO("fi-photo", '\uf195'),
+    FI_PLAY_CIRCLE("fi-play-circle", '\uf196'),
+    FI_PLAY_VIDEO("fi-play-video", '\uf197'),
+    FI_PLAY("fi-play", '\uf198'),
+    FI_PLUS("fi-plus", '\uf199'),
+    FI_POUND("fi-pound", '\uf19a'),
+    FI_POWER("fi-power", '\uf19b'),
+    FI_PREVIOUS("fi-previous", '\uf19c'),
+    FI_PRICE_TAG("fi-price-tag", '\uf19d'),
+    FI_PRICETAG_MULTIPLE("fi-pricetag-multiple", '\uf19e'),
+    FI_PRINT("fi-print", '\uf19f'),
+    FI_PROHIBITED("fi-prohibited", '\uf1a0'),
+    FI_PROJECTION_SCREEN("fi-projection-screen", '\uf1a1'),
+    FI_PUZZLE("fi-puzzle", '\uf1a2'),
+    FI_QUOTE("fi-quote", '\uf1a3'),
+    FI_RECORD("fi-record", '\uf1a4'),
+    FI_REFRESH("fi-refresh", '\uf1a5'),
+    FI_RESULTS_DEMOGRAPHICS("fi-results-demographics", '\uf1a6'),
+    FI_RESULTS("fi-results", '\uf1a7'),
+    FI_REWIND_TEN("fi-rewind-ten", '\uf1a8'),
+    FI_REWIND("fi-rewind", '\uf1a9'),
+    FI_RSS("fi-rss", '\uf1aa'),
+    FI_SAFETY_CONE("fi-safety-cone", '\uf1ab'),
+    FI_SAVE("fi-save", '\uf1ac'),
+    FI_SHARE("fi-share", '\uf1ad'),
+    FI_SHERIFF_BADGE("fi-sheriff-badge", '\uf1ae'),
+    FI_SHIELD("fi-shield", '\uf1af'),
+    FI_SHOPPING_BAG("fi-shopping-bag", '\uf1b0'),
+    FI_SHOPPING_CART("fi-shopping-cart", '\uf1b1'),
+    FI_SHUFFLE("fi-shuffle", '\uf1b2'),
+    FI_SKULL("fi-skull", '\uf1b3'),
+    FI_SOCIAL_500PX("fi-social-500px", '\uf1b4'),
+    FI_SOCIAL_ADOBE("fi-social-adobe", '\uf1b5'),
+    FI_SOCIAL_AMAZON("fi-social-amazon", '\uf1b6'),
+    FI_SOCIAL_ANDROID("fi-social-android", '\uf1b7'),
+    FI_SOCIAL_APPLE("fi-social-apple", '\uf1b8'),
+    FI_SOCIAL_BEHANCE("fi-social-behance", '\uf1b9'),
+    FI_SOCIAL_BING("fi-social-bing", '\uf1ba'),
+    FI_SOCIAL_BLOGGER("fi-social-blogger", '\uf1bb'),
+    FI_SOCIAL_DELICIOUS("fi-social-delicious", '\uf1bc'),
+    FI_SOCIAL_DESIGNER_NEWS("fi-social-designer-news", '\uf1bd'),
+    FI_SOCIAL_DEVIANT_ART("fi-social-deviant-art", '\uf1be'),
+    FI_SOCIAL_DIGG("fi-social-digg", '\uf1bf'),
+    FI_SOCIAL_DRIBBBLE("fi-social-dribbble", '\uf1c0'),
+    FI_SOCIAL_DRIVE("fi-social-drive", '\uf1c1'),
+    FI_SOCIAL_DROPBOX("fi-social-dropbox", '\uf1c2'),
+    FI_SOCIAL_EVERNOTE("fi-social-evernote", '\uf1c3'),
+    FI_SOCIAL_FACEBOOK("fi-social-facebook", '\uf1c4'),
+    FI_SOCIAL_FLICKR("fi-social-flickr", '\uf1c5'),
+    FI_SOCIAL_FORRST("fi-social-forrst", '\uf1c6'),
+    FI_SOCIAL_FOURSQUARE("fi-social-foursquare", '\uf1c7'),
+    FI_SOCIAL_GAME_CENTER("fi-social-game-center", '\uf1c8'),
+    FI_SOCIAL_GITHUB("fi-social-github", '\uf1c9'),
+    FI_SOCIAL_GOOGLE_PLUS("fi-social-google-plus", '\uf1ca'),
+    FI_SOCIAL_HACKER_NEWS("fi-social-hacker-news", '\uf1cb'),
+    FI_SOCIAL_HI5("fi-social-hi5", '\uf1cc'),
+    FI_SOCIAL_INSTAGRAM("fi-social-instagram", '\uf1cd'),
+    FI_SOCIAL_JOOMLA("fi-social-joomla", '\uf1ce'),
+    FI_SOCIAL_LASTFM("fi-social-lastfm", '\uf1cf'),
+    FI_SOCIAL_LINKEDIN("fi-social-linkedin", '\uf1d0'),
+    FI_SOCIAL_MEDIUM("fi-social-medium", '\uf1d1'),
+    FI_SOCIAL_MYSPACE("fi-social-myspace", '\uf1d2'),
+    FI_SOCIAL_ORKUT("fi-social-orkut", '\uf1d3'),
+    FI_SOCIAL_PATH("fi-social-path", '\uf1d4'),
+    FI_SOCIAL_PICASA("fi-social-picasa", '\uf1d5'),
+    FI_SOCIAL_PINTEREST("fi-social-pinterest", '\uf1d6'),
+    FI_SOCIAL_RDIO("fi-social-rdio", '\uf1d7'),
+    FI_SOCIAL_REDDIT("fi-social-reddit", '\uf1d8'),
+    FI_SOCIAL_SKILLSHARE("fi-social-skillshare", '\uf1d9'),
+    FI_SOCIAL_SKYPE("fi-social-skype", '\uf1da'),
+    FI_SOCIAL_SMASHING_MAG("fi-social-smashing-mag", '\uf1db'),
+    FI_SOCIAL_SNAPCHAT("fi-social-snapchat", '\uf1dc'),
+    FI_SOCIAL_SPOTIFY("fi-social-spotify", '\uf1dd'),
+    FI_SOCIAL_SQUIDOO("fi-social-squidoo", '\uf1de'),
+    FI_SOCIAL_STACK_OVERFLOW("fi-social-stack-overflow", '\uf1df'),
+    FI_SOCIAL_STEAM("fi-social-steam", '\uf1e0'),
+    FI_SOCIAL_STUMBLEUPON("fi-social-stumbleupon", '\uf1e1'),
+    FI_SOCIAL_TREEHOUSE("fi-social-treehouse", '\uf1e2'),
+    FI_SOCIAL_TUMBLR("fi-social-tumblr", '\uf1e3'),
+    FI_SOCIAL_TWITTER("fi-social-twitter", '\uf1e4'),
+    FI_SOCIAL_VIMEO("fi-social-vimeo", '\uf1e5'),
+    FI_SOCIAL_WINDOWS("fi-social-windows", '\uf1e6'),
+    FI_SOCIAL_XBOX("fi-social-xbox", '\uf1e7'),
+    FI_SOCIAL_YAHOO("fi-social-yahoo", '\uf1e8'),
+    FI_SOCIAL_YELP("fi-social-yelp", '\uf1e9'),
+    FI_SOCIAL_YOUTUBE("fi-social-youtube", '\uf1ea'),
+    FI_SOCIAL_ZERPLY("fi-social-zerply", '\uf1eb'),
+    FI_SOCIAL_ZURB("fi-social-zurb", '\uf1ec'),
+    FI_SOUND("fi-sound", '\uf1ed'),
+    FI_STAR("fi-star", '\uf1ee'),
+    FI_STOP("fi-stop", '\uf1ef'),
+    FI_STRIKETHROUGH("fi-strikethrough", '\uf1f0'),
+    FI_SUBSCRIPT("fi-subscript", '\uf1f1'),
+    FI_SUPERSCRIPT("fi-superscript", '\uf1f2'),
+    FI_TABLET_LANDSCAPE("fi-tablet-landscape", '\uf1f3'),
+    FI_TABLET_PORTRAIT("fi-tablet-portrait", '\uf1f4'),
+    FI_TARGET_TWO("fi-target-two", '\uf1f5'),
+    FI_TARGET("fi-target", '\uf1f6'),
+    FI_TELEPHONE_ACCESSIBLE("fi-telephone-accessible", '\uf1f7'),
+    FI_TELEPHONE("fi-telephone", '\uf1f8'),
+    FI_TEXT_COLOR("fi-text-color", '\uf1f9'),
+    FI_THUMBNAILS("fi-thumbnails", '\uf1fa'),
+    FI_TICKET("fi-ticket", '\uf1fb'),
+    FI_TORSO_BUSINESS("fi-torso-business", '\uf1fc'),
+    FI_TORSO_FEMALE("fi-torso-female", '\uf1fd'),
+    FI_TORSO("fi-torso", '\uf1fe'),
+    FI_TORSOS_ALL_FEMALE("fi-torsos-all-female", '\uf1ff'),
+    FI_TORSOS_ALL("fi-torsos-all", '\uf200'),
+    FI_TORSOS_FEMALE_MALE("fi-torsos-female-male", '\uf201'),
+    FI_TORSOS_MALE_FEMALE("fi-torsos-male-female", '\uf202'),
+    FI_TORSOS("fi-torsos", '\uf203'),
+    FI_TRASH("fi-trash", '\uf204'),
+    FI_TREES("fi-trees", '\uf205'),
+    FI_TROPHY("fi-trophy", '\uf206'),
+    FI_UNDERLINE("fi-underline", '\uf207'),
+    FI_UNIVERSAL_ACCESS("fi-universal-access", '\uf208'),
+    FI_UNLINK("fi-unlink", '\uf209'),
+    FI_UNLOCK("fi-unlock", '\uf20a'),
+    FI_UPLOAD_CLOUD("fi-upload-cloud", '\uf20b'),
+    FI_UPLOAD("fi-upload", '\uf20c'),
+    FI_USB("fi-usb", '\uf20d'),
+    FI_VIDEO("fi-video", '\uf20e'),
+    FI_VOLUME_NONE("fi-volume-none", '\uf20f'),
+    FI_VOLUME_STRIKE("fi-volume-strike", '\uf210'),
+    FI_VOLUME("fi-volume", '\uf211'),
+    FI_WEB("fi-web", '\uf212'),
+    FI_WHEELCHAIR("fi-wheelchair", '\uf213'),
+    FI_WIDGET("fi-widget", '\uf214'),
+    FI_WRENCH("fi-wrench", '\uf215'),
+    FI_X_CIRCLE("fi-x-circle", '\uf216'),
+    FI_X("fi-x", '\uf217'),
+    FI_YEN("fi-yen", '\uf218'),
+    FI_ZOOM_IN("fi-zoom-in", '\uf219'),
+    FI_ZOOM_OUT("fi-zoom-out", '\uf21a');
+
+    private static final String ERROR_DESCRIPTION_BLANK = "Argument 'description' must not be blank";
+
+    public static Foundation findByDescription(@Nonnull String description) {
+        requireNonBlank(description, "Icon description must not be blank.");
+        String[] parts = description.split(":");
+        for (Foundation font : values()) {
+            if (font.getDescription().equals(parts[0])) {
+                return font;
+            }
+        }
+        throw new IllegalArgumentException("Icon description '" + description + "' is invalid!");
+    }
+
+    private String description;
+    private char code;
+
+    Foundation(@Nonnull String description, char code) {
+        this.description = description;
+        this.code = code;
+    }
+
+    @Nonnull
+    public String getDescription() {
+        return description;
+    }
+
+    public char getCode() {
+        return code;
+    }
+
+    @Nonnull
+    public static IllegalArgumentException invalidDescription(@Nonnull String description) {
+        requireNonBlank(description, ERROR_DESCRIPTION_BLANK);
+        throw new IllegalArgumentException("Description " + description + " is not a valid Foundation icon description");
+    }
+
+    @Nonnull
+    public static IllegalArgumentException invalidDescription(@Nonnull String description, Exception e) {
+        requireNonBlank(description, ERROR_DESCRIPTION_BLANK);
+        throw new IllegalArgumentException("Description " + description + " is not a valid Foundation icon description", e);
+    }
+}
