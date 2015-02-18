@@ -1,0 +1,1821 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.2">
+<meta name="author" content="Andres Almiray">
+<title>Griffon Foundation Icon Font Plugin</title>
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.2.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="./coderay-asciidoctor.css">
+
+<link href='./css/foundation-icons.css' rel='stylesheet'>
+<style>
+    [class^="fi-"]:before, [class*=" fi-"]:before {
+        font-size: 32px;
+    }
+</style>
+</head>
+<body class="book toc2 toc-left">
+<div id="header">
+<h1>Griffon Foundation Icon Font Plugin</h1>
+<div class="details">
+<span id="author" class="author">Andres Almiray</span><br>
+<span id="revnumber">version 1.0.0-SNAPSHOT</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a></li>
+<li><a href="#_usage">2. Usage</a>
+<ul class="sectlevel2">
+<li><a href="#_swing">2.1. Swing</a></li>
+<li><a href="#_javafx">2.2. JavaFX</a></li>
+<li><a href="#_action_resources">2.3. Action Resources</a></li>
+</ul>
+</li>
+<li><a href="#_configuration">3. Configuration</a>
+<ul class="sectlevel2">
+<li><a href="#_gradle">3.1. Gradle</a>
+<ul class="sectlevel3">
+<li><a href="#_automatic">3.1.1. Automatic</a></li>
+<li><a href="#_manual">3.1.2. Manual</a></li>
+</ul>
+</li>
+<li><a href="#_maven">3.2. Maven</a></li>
+</ul>
+</li>
+<li><a href="#_modules">4. Modules</a>
+<ul class="sectlevel2">
+<li><a href="#_javafx_2">4.1. JavaFX</a></li>
+<li><a href="#_swing_2">4.2. Swing</a></li>
+</ul>
+</li>
+<li><a href="#_links">5. Links</a></li>
+<li><a href="#icon_cheat_cheet">6. Icon Cheat Sheet</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction"><a class="anchor" href="#_introduction"></a>1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="http://zurb.com/playground/foundation-icon-fonts-3" target="_blank">Zurb&#8217;s Foundation Icon Fonts 3</a> gives you scalable vector icons that can instantly be customized.
+This plugin enables toolkit specific icon support.</p>
+</div>
+<div class="paragraph">
+<p>Currently supported Foundation version is <code>3.0</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_usage"><a class="anchor" href="#_usage"></a>2. Usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_swing"><a class="anchor" href="#_swing"></a>2.1. Swing</h3>
+<div class="paragraph">
+<p>The <code>griffon-foundation-swing:1.0.0-SNAPSHOT</code> JAR provides a new Icon class: <code><a href="api/griffon/swing/support/foundation/FoundationIcon.html" target="_blank">griffon.swing.support.foundation.FoundationIcon</a></code>.
+You may use this class with any Swing component that supports an Icon property.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_javafx"><a class="anchor" href="#_javafx"></a>2.2. JavaFX</h3>
+<div class="paragraph">
+<p>The <code>griffon-foundation-javafx:1.0.0-SNAPSHOT</code> JAR provides a new Node class: <code><a href="api/griffon/javafx/support/foundation/FoundationIcon.html" target="_blank">griffon.javafx.support.foundation.FoundationIcon</a></code>.
+You may use this class with any JavaFX control that accepts a graphic property. You may also use the icon directly as
+it is a subclass of <code>javafx.scene.control.Label</code>. The icon class can be used inside an FXML file too.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="xml"><span class="preprocessor">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+
+<span class="comment">&lt;?import javafx.scene.control.Button?&gt;</span>
+<span class="comment">&lt;?import javafx.scene.layout.GridPane?&gt;</span>
+<span class="comment">&lt;?import griffon.javafx.support.foundation.FoundationIcon?&gt;</span>
+
+<span class="tag">&lt;GridPane</span> <span class="attribute-name">prefHeight</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">60.0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">prefWidth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200.0</span><span class="delimiter">&quot;</span></span>
+          <span class="attribute-name">xmlns:fx</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://javafx.com/fxml</span><span class="delimiter">&quot;</span></span>
+          <span class="attribute-name">fx:controller</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">org.example.AppController</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+    <span class="tag">&lt;children&gt;</span>
+        <span class="tag">&lt;Button</span> <span class="attribute-name">fx:id</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">preferencesActionTarget</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">GridPane.columnIndex</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">GridPane.rowIndex</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">0</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">mnemonicParsing</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">false</span><span class="delimiter">&quot;</span></span>
+                <span class="attribute-name">prefWidth</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">200.0</span><span class="delimiter">&quot;</span></span><span class="tag">&gt;</span>
+            <span class="tag">&lt;graphic&gt;</span>
+                <span class="tag">&lt;FoundationIcon</span> <span class="attribute-name">foundation</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">FI_STAR</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span>
+            <span class="tag">&lt;/graphic&gt;</span>
+        <span class="tag">&lt;/Button&gt;</span>
+    <span class="tag">&lt;/children&gt;</span>
+<span class="tag">&lt;/GridPane&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The JavaFX icon requires the usage of the <code>Foundation</code> enum value.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_action_resources"><a class="anchor" href="#_action_resources"></a>2.3. Action Resources</h3>
+<div class="paragraph">
+<p>Action icons can be set using resources files if the following format is used:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight"><code>iconClassName|name:size:color</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>size</code> and <code>color</code> are optional.</p>
+</div>
+<div class="paragraph">
+<p>Here&#8217;s an example using the Swing icon</p>
+</div>
+<div class="listingblock">
+<div class="title">griffon-app/i18n/messages.properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">org.example.AppController.action.Preferences.icon=griffon.swing.support.foundation.FoundationIcon|fi-star</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The JavaFX version for the same icon value is</p>
+</div>
+<div class="listingblock">
+<div class="title">griffon-app/i18n/messages.properties</div>
+<div class="content">
+<pre class="CodeRay highlight"><code data-lang="java">org.example.AppController.action.Preferences.icon=griffon.javafx.support.foundation.FoundationIcon|fi-star</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_configuration"><a class="anchor" href="#_configuration"></a>3. Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The plugin delivers artifacts for both Swing and JavaFX. It also contains Groovy enhancements
+that can be used in combination with the respective UI toolkit DSL (SwingBuilder and GroovyFX).</p>
+</div>
+<div class="sect2">
+<h3 id="_gradle"><a class="anchor" href="#_gradle"></a>3.1. Gradle</h3>
+<div class="paragraph">
+<p>You have two options for configuring this plugin: automatic and manual.</p>
+</div>
+<div class="sect3">
+<h4 id="_automatic"><a class="anchor" href="#_automatic"></a>3.1.1. Automatic</h4>
+<div class="paragraph">
+<p>As long as the project has the <code>org.codehaus.griffon.griffon</code> plugin applied to it you
+may include the following snippet in <code>build.gradle</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
+    griffon 'org.codehaus.griffon.plugins:griffon-foundation-plugin:1.0.0-SNAPSHOT'
+}</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The <code>griffon</code> plugin will take care of the rest given its configuration.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_manual"><a class="anchor" href="#_manual"></a>3.1.2. Manual</h4>
+<div class="paragraph">
+<p>You will need to configure any of the following blocks depending on your setup</p>
+</div>
+<div class="listingblock">
+<div class="title">Java + Swing</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
+    compile 'org.codehaus.griffon.plugins:griffon-foundation-swing:1.0.0-SNAPSHOT'
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Java + JavaFX</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
+    compile 'org.codehaus.griffon.plugins:griffon-foundation-javafx:1.0.0-SNAPSHOT'
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Groovy + Swing</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
+    compile 'org.codehaus.griffon.plugins:griffon-foundation-swing-groovy:1.0.0-SNAPSHOT'
+}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Groovy + JavaFX</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="groovy">dependencies {
+    compile 'org.codehaus.griffon.plugins:griffon-foundation-javafx-groovy:1.0.0-SNAPSHOT'
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_maven"><a class="anchor" href="#_maven"></a>3.2. Maven</h3>
+<div class="paragraph">
+<p>First configure the <code>griffon-foundation-plugin</code> BOM in your POM file, by placing the following
+snippet before the <code>&lt;build&gt;</code> element</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependencyManagement&gt;</span>
+    <span class="tag">&lt;dependencies&gt;</span>
+        <span class="tag">&lt;dependency&gt;</span>
+            <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
+            <span class="tag">&lt;artifactId&gt;</span>griffon-foundation-plugin<span class="tag">&lt;/artifactId&gt;</span>
+            <span class="tag">&lt;version&gt;</span>1.0.0-SNAPSHOT<span class="tag">&lt;/version&gt;</span>
+            <span class="tag">&lt;type&gt;</span>pom<span class="tag">&lt;/type&gt;</span>
+            <span class="tag">&lt;scope&gt;</span>import<span class="tag">&lt;/scope&gt;</span>
+        <span class="tag">&lt;/dependency&gt;</span>
+    <span class="tag">&lt;/dependencies&gt;</span>
+<span class="tag">&lt;/dependencyManagement&gt;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Next configure dependencies as required by your particular setup</p>
+</div>
+<div class="listingblock">
+<div class="title">Java + Swing</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>griffon-foundation-swing<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Java + JavaFX</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>griffon-foundation-javafx<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Groovy + Swing</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>griffon-foundation-swing-groovy<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Groovy + JavaFX</div>
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="xml"><span class="tag">&lt;dependency&gt;</span>
+    <span class="tag">&lt;groupId&gt;</span>org.codehaus.griffon.plugins<span class="tag">&lt;/groupId&gt;</span>
+    <span class="tag">&lt;artifactId&gt;</span>griffon-foundation-javafx-groovy<span class="tag">&lt;/artifactId&gt;</span>
+<span class="tag">&lt;/dependency&gt;</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_modules"><a class="anchor" href="#_modules"></a>4. Modules</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following sections display all bindings per module. Use this information to
+successfully override a binding on your own modules or to troubleshoot a module
+binding if the wrong type has been applied by the Griffon runtime.</p>
+</div>
+<div class="sect2">
+<h3 id="_javafx_2"><a class="anchor" href="#_javafx_2"></a>4.1. JavaFX</h3>
+<div class="paragraph">
+<p>Module name: <code>foundation-javafx-groovy</code></p>
+</div>
+<div class="paragraph">
+<p>Depends on: <code>javafx-groovy</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java">bind(BuilderCustomizer.class)
+    .to(FoundationJavaFXBuilderCustomizer.class)
+    .asSingleton();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following nodes will become available on a Groovy View</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Node</th>
+<th class="tableblock halign-left valign-top">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foundationIcon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="api/griffon/javafx/support/foundation/FoundationIcon.html" target="_blank">griffon.javafx.support.foundation.FoundationIcon</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_swing_2"><a class="anchor" href="#_swing_2"></a>4.2. Swing</h3>
+<div class="paragraph">
+<p>Module name: <code>foundation-swing-groovy</code></p>
+</div>
+<div class="paragraph">
+<p>Depends on: <code>swing-groovy</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="CodeRay highlight nowrap"><code data-lang="java">bind(BuilderCustomizer.class)
+    .to(FoundationSwingBuilderCustomizer.class)
+    .asSingleton();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The following nodes will become available on a Groovy View</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Node</th>
+<th class="tableblock halign-left valign-top">Type</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">foundationIcon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code><a href="api/griffon/swing/support/foundation/FoundationIcon.html" target="_blank">griffon.swing.support.foundation.FoundationIcon</a></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_links"><a class="anchor" href="#_links"></a>5. Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="api/index.html" target="_blank">Javadoc</a></p>
+</div>
+<div class="paragraph">
+<p><a href="api-src/index.html" target="_blank">API Sources</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="icon_cheat_cheet"><a class="anchor" href="#icon_cheat_cheet"></a>6. Icon Cheat Sheet</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following tables show all available icons.</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33%;">
+<col style="width: 33%;">
+<col style="width: 33%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Enum</th>
+<th class="tableblock halign-left valign-top">Name</th>
+<th class="tableblock halign-left valign-top">Icon</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ADDRESS_BOOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-address-book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-address-book"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ALERT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-alert</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-alert"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ALIGN_CENTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-align-center</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-align-center"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ALIGN_JUSTIFY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-align-justify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-align-justify"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ALIGN_LEFT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-align-left</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-align-left"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ALIGN_RIGHT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-align-right</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-align-right"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ANCHOR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-anchor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-anchor"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ANNOTATE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-annotate</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-annotate"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARCHIVE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-archive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-archive"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROW_DOWN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrow-down</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrow-down"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROW_LEFT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrow-left</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrow-left"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROW_RIGHT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrow-right</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrow-right"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROW_UP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrow-up</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrow-up"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROWS_COMPRESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrows-compress</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrows-compress"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROWS_EXPAND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrows-expand</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrows-expand"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROWS_IN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrows-in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrows-in"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ARROWS_OUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-arrows-out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-arrows-out"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ASL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-asl</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-asl"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ASTERISK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-asterisk</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-asterisk"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_AT_SIGN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-at-sign</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-at-sign"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BACKGROUND_COLOR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-background-color</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-background-color"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BATTERY_EMPTY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-battery-empty</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-battery-empty"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BATTERY_FULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-battery-full</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-battery-full"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BATTERY_HALF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-battery-half</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-battery-half"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BITCOIN_CIRCLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-bitcoin-circle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-bitcoin-circle"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BITCOIN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-bitcoin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-bitcoin"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BLIND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-blind</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-blind"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BLUETOOTH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-bluetooth</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-bluetooth"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BOLD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-bold</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-bold"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BOOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-book</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-book"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BOOKMARK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-bookmark</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-bookmark"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BRAILLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-braille</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-braille"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BURST_NEW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-burst-new</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-burst-new"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BURST_SALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-burst-sale</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-burst-sale"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_BURST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-burst</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-burst"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CALENDAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-calendar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-calendar"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CAMERA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-camera</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-camera"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CHECK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-check</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-check"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CHECKBOX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-checkbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-checkbox"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CLIPBOARD_NOTES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-clipboard-notes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-clipboard-notes"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CLIPBOARD_PENCIL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-clipboard-pencil</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-clipboard-pencil"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CLIPBOARD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-clipboard</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-clipboard"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CLOCK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-clock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-clock"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CLOSED_CAPTION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-closed-caption</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-closed-caption"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CLOUD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-cloud</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-cloud"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_COMMENT_MINUS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-comment-minus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-comment-minus"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_COMMENT_QUOTES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-comment-quotes</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-comment-quotes"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_COMMENT_VIDEO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-comment-video</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-comment-video"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_COMMENT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-comment</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-comment"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_COMMENTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-comments</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-comments"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_COMPASS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-compass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-compass"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CONTRAST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-contrast</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-contrast"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CREDIT_CARD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-credit-card</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-credit-card"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CROP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-crop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-crop"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CROWN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-crown</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-crown"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_CSS3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-css3</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-css3"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DATABASE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-database</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-database"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DIE_FIVE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-die-five</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-die-five"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DIE_FOUR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-die-four</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-die-four"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DIE_ONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-die-one</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-die-one"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DIE_SIX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-die-six</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-die-six"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DIE_THREE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-die-three</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-die-three"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DIE_TWO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-die-two</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-die-two"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DISLIKE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-dislike</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-dislike"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DOLLAR_BILL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-dollar-bill</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-dollar-bill"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DOLLAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-dollar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-dollar"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_DOWNLOAD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-download</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-download"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_EJECT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-eject</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-eject"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ELEVATOR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-elevator</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-elevator"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_EURO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-euro</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-euro"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_EYE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-eye</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-eye"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FAST_FORWARD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-fast-forward</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-fast-forward"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FEMALE_SYMBOL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-female-symbol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-female-symbol"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FEMALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-female</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-female"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FILTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-filter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-filter"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FIRST_AID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-first-aid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-first-aid"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FLAG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-flag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-flag"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FOLDER_ADD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-folder-add</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-folder-add"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FOLDER_LOCK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-folder-lock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-folder-lock"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FOLDER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-folder</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-folder"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FOOT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-foot</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-foot"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_FOUNDATION</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-foundation</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-foundation"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_GRAPH_BAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-graph-bar</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-graph-bar"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_GRAPH_HORIZONTAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-graph-horizontal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-graph-horizontal"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_GRAPH_PIE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-graph-pie</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-graph-pie"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_GRAPH_TREND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-graph-trend</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-graph-trend"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_GUIDE_DOG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-guide-dog</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-guide-dog"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_HEARING_AID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-hearing-aid</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-hearing-aid"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_HEART</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-heart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-heart"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_HOME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-home</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-home"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_HTML5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-html5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-html5"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_INDENT_LESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-indent-less</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-indent-less"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_INDENT_MORE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-indent-more</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-indent-more"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_INFO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-info</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-info"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ITALIC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-italic</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-italic"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_KEY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-key</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-key"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LAPTOP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-laptop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-laptop"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LAYOUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-layout</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-layout"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LIGHTBULB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-lightbulb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-lightbulb"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LIKE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-like</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-like"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LINK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-link</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-link"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LIST_BULLET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-list-bullet</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-list-bullet"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LIST_NUMBER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-list-number</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-list-number"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LIST_THUMBNAILS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-list-thumbnails</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-list-thumbnails"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LIST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-list</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-list"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LOCK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-lock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-lock"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_LOOP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-loop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-loop"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MAGNIFYING_GLASS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-magnifying-glass</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-magnifying-glass"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MAIL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-mail</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-mail"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MALE_FEMALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-male-female</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-male-female"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MALE_SYMBOL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-male-symbol</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-male-symbol"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-male</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-male"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-map</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-map"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MARKER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-marker</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-marker"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MEGAPHONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-megaphone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-megaphone"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MICROPHONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-microphone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-microphone"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MINUS_CIRCLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-minus-circle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-minus-circle"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MINUS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-minus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-minus"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MOBILE_SIGNAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-mobile-signal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-mobile-signal"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MOBILE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-mobile</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-mobile"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MONITOR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-monitor</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-monitor"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MOUNTAINS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-mountains</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-mountains"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_MUSIC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-music</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-music"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_NEXT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-next</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-next"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_NO_DOGS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-no-dogs</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-no-dogs"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_NO_SMOKING</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-no-smoking</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-no-smoking"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_ADD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-add</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-add"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_COPY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-copy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-copy"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_CSV</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-csv"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_DELETE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-delete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-delete"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_DOC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-doc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-doc"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_EDIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-edit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-edit"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_EXPORT_CSV</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-export-csv</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-export-csv"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_EXPORT_DOC</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-export-doc</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-export-doc"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_EXPORT_PDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-export-pdf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-export-pdf"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_EXPORT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-export</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-export"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_FILLED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-filled</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-filled"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_MULTIPLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-multiple</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-multiple"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_PDF</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-pdf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-pdf"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_REMOVE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-remove</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-remove"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE_SEARCH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page-search</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page-search"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-page</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-page"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAINT_BUCKET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-paint-bucket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-paint-bucket"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAPERCLIP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-paperclip</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-paperclip"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAUSE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-pause</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-pause"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-paw</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-paw"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PAYPAL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-paypal</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-paypal"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PENCIL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-pencil</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-pencil"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PHOTO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-photo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-photo"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PLAY_CIRCLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-play-circle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-play-circle"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PLAY_VIDEO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-play-video</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-play-video"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PLAY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-play</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-play"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PLUS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-plus"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_POUND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-pound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-pound"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_POWER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-power</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-power"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PREVIOUS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-previous</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-previous"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PRICE_TAG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-price-tag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-price-tag"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PRICETAG_MULTIPLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-pricetag-multiple</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-pricetag-multiple"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PRINT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-print</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-print"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PROHIBITED</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-prohibited</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-prohibited"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PROJECTION_SCREEN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-projection-screen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-projection-screen"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_PUZZLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-puzzle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-puzzle"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_QUOTE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-quote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-quote"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_RECORD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-record</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-record"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_REFRESH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-refresh</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-refresh"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_RESULTS_DEMOGRAPHICS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-results-demographics</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-results-demographics"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_RESULTS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-results</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-results"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_REWIND_TEN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-rewind-ten</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-rewind-ten"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_REWIND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-rewind</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-rewind"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_RSS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-rss</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-rss"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SAFETY_CONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-safety-cone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-safety-cone"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SAVE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-save</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-save"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SHARE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-share</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-share"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SHERIFF_BADGE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-sheriff-badge</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-sheriff-badge"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SHIELD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-shield</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-shield"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SHOPPING_BAG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-shopping-bag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-shopping-bag"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SHOPPING_CART</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-shopping-cart</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-shopping-cart"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SHUFFLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-shuffle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-shuffle"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SKULL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-skull</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-skull"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_500PX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-500px</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-500px"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_ADOBE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-adobe</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-adobe"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_AMAZON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-amazon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-amazon"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_ANDROID</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-android</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-android"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_APPLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-apple</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-apple"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_BEHANCE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-behance</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-behance"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_BING</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-bing</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-bing"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_BLOGGER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-blogger</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-blogger"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DELICIOUS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-delicious</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-delicious"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DESIGNER_NEWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-designer-news</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-designer-news"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DEVIANT_ART</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-deviant-art</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-deviant-art"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DIGG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-digg</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-digg"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DRIBBBLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-dribbble</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-dribbble"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DRIVE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-drive</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-drive"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_DROPBOX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-dropbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-dropbox"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_EVERNOTE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-evernote</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-evernote"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_FACEBOOK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-facebook</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-facebook"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_FLICKR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-flickr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-flickr"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_FORRST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-forrst</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-forrst"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_FOURSQUARE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-foursquare</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-foursquare"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_GAME_CENTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-game-center</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-game-center"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_GITHUB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-github</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-github"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_GOOGLE_PLUS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-google-plus</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-google-plus"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_HACKER_NEWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-hacker-news</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-hacker-news"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_HI5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-hi5</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-hi5"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_INSTAGRAM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-instagram</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-instagram"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_JOOMLA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-joomla</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-joomla"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_LASTFM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-lastfm</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-lastfm"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_LINKEDIN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-linkedin</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-linkedin"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_MEDIUM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-medium</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-medium"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_MYSPACE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-myspace</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-myspace"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_ORKUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-orkut</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-orkut"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_PATH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-path</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-path"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_PICASA</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-picasa</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-picasa"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_PINTEREST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-pinterest</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-pinterest"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_RDIO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-rdio</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-rdio"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_REDDIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-reddit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-reddit"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_SKILLSHARE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-skillshare</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-skillshare"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_SKYPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-skype</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-skype"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_SMASHING_MAG</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-smashing-mag</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-smashing-mag"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_SNAPCHAT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-snapchat</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-snapchat"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_SPOTIFY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-spotify</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-spotify"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_SQUIDOO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-squidoo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-squidoo"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_STACK_OVERFLOW</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-stack-overflow</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-stack-overflow"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_STEAM</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-steam</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-steam"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_STUMBLEUPON</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-stumbleupon</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-stumbleupon"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_TREEHOUSE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-treehouse</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-treehouse"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_TUMBLR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-tumblr</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-tumblr"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_TWITTER</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-twitter</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-twitter"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_VIMEO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-vimeo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-vimeo"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_WINDOWS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-windows</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-windows"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_XBOX</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-xbox</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-xbox"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_YAHOO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-yahoo</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-yahoo"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_YELP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-yelp</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-yelp"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_YOUTUBE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-youtube</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-youtube"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_ZERPLY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-zerply</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-zerply"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOCIAL_ZURB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-social-zurb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-social-zurb"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SOUND</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-sound</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-sound"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_STAR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-star</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-star"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_STOP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-stop</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-stop"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_STRIKETHROUGH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-strikethrough</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-strikethrough"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SUBSCRIPT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-subscript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-subscript"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_SUPERSCRIPT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-superscript</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-superscript"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TABLET_LANDSCAPE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-tablet-landscape</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-tablet-landscape"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TABLET_PORTRAIT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-tablet-portrait</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-tablet-portrait"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TARGET_TWO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-target-two</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-target-two"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TARGET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-target</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-target"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TELEPHONE_ACCESSIBLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-telephone-accessible</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-telephone-accessible"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TELEPHONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-telephone</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-telephone"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TEXT_COLOR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-text-color</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-text-color"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_THUMBNAILS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-thumbnails</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-thumbnails"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TICKET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-ticket</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-ticket"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSO_BUSINESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torso-business</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torso-business"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSO_FEMALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torso-female</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torso-female"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torso</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torso"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSOS_ALL_FEMALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torsos-all-female</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torsos-all-female"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSOS_ALL</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torsos-all</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torsos-all"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSOS_FEMALE_MALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torsos-female-male</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torsos-female-male"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSOS_MALE_FEMALE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torsos-male-female</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torsos-male-female"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TORSOS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-torsos</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-torsos"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TRASH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-trash</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-trash"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TREES</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-trees</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-trees"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_TROPHY</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-trophy</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-trophy"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_UNDERLINE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-underline</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-underline"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_UNIVERSAL_ACCESS</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-universal-access</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-universal-access"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_UNLINK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-unlink</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-unlink"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_UNLOCK</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-unlock</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-unlock"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_UPLOAD_CLOUD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-upload-cloud</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-upload-cloud"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_UPLOAD</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-upload</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-upload"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_USB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-usb</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-usb"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_VIDEO</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-video</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-video"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_VOLUME_NONE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-volume-none</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-volume-none"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_VOLUME_STRIKE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-volume-strike</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-volume-strike"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_VOLUME</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-volume</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-volume"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_WEB</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-web</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-web"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_WHEELCHAIR</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-wheelchair</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-wheelchair"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_WIDGET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-widget</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-widget"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_WRENCH</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-wrench</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-wrench"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_X_CIRCLE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-x-circle</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-x-circle"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_X</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-x</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-x"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_YEN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-yen</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-yen"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ZOOM_IN</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-zoom-in</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-zoom-in"></span></p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">FI_ZOOM_OUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fi-zoom-out</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><span class="fi-zoom-out"></span></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Version 1.0.0-SNAPSHOT<br>
+Last updated 2015-02-18 11:35:23 CET
+</div>
+</div>
+</body>
+</html>
