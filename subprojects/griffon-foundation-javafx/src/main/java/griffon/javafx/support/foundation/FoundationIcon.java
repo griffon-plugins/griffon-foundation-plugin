@@ -17,9 +17,9 @@ package griffon.javafx.support.foundation;
 
 import griffon.core.editors.PropertyEditorResolver;
 import griffon.plugins.foundation.Foundation;
-import javafx.scene.control.Label;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.Text;
 
 import javax.annotation.Nonnull;
 import java.beans.PropertyEditor;
@@ -32,7 +32,7 @@ import static java.util.Objects.requireNonNull;
 /**
  * @author Andres Almiray
  */
-public class FoundationIcon extends Label {
+public class FoundationIcon extends Text {
     private static final String FOUNDATION_SET = "META-INF/resources/foundation/3.0/fonts/foundation-icons.ttf";
     private static final String ERROR_FONT_FOUNDATION_NULL = "Argument 'foundation' must not be null";
     private static final String FOUNDATION_FONT_FAMILY;
@@ -94,7 +94,7 @@ public class FoundationIcon extends Label {
 
     public void setIconColor(@Nonnull Color color) {
         requireNonNull(color, "Argument 'color' must not be null");
-        setTextFill(color);
+        setFill(color);
         this.iconColor = color;
     }
 

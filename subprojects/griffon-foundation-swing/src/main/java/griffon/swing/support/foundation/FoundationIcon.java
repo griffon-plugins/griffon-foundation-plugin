@@ -44,10 +44,12 @@ public class FoundationIcon implements Icon {
     private static final String FOUNDATION_SET = "META-INF/resources/foundation/3.0/fonts/foundation-icons.ttf";
     private static final String ERROR_FONT_FOUNDATION_NULL = "Argument 'foundation' must not be null";
 
-    private static final Font awesome;
+    private static final Font FOUNDATION;
     private static final Object LOCK = new Object[0];
 
     private int size;
+    private int width;
+    private int height;
     private BufferedImage buffer;
 
     private Foundation foundation;
@@ -57,8 +59,8 @@ public class FoundationIcon implements Icon {
     static {
         try {
             InputStream stream = Thread.currentThread().getContextClassLoader().getResourceAsStream(FOUNDATION_SET);
-            awesome = Font.createFont(Font.TRUETYPE_FONT, stream);
-            GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(awesome);
+            FOUNDATION = Font.createFont(Font.TRUETYPE_FONT, stream);
+            GraphicsEnvironment.getLocalGraphicsEnvironment().registerFont(FOUNDATION);
             stream.close();
         } catch (FontFormatException | IOException ffe) {
             throw new RuntimeException(ffe);
@@ -126,7 +128,17 @@ public class FoundationIcon implements Icon {
     public void setSize(int size) {
         if (size > 0) {
             this.size = size;
-            font = awesome.deriveFont(Font.PLAIN, size);
+            font = FOUNDATION.deriveFont(Font.PLAIN, size);
+
+            BufferedImage tmp = new BufferedImage(size, size,
+                BufferedImage.TYPE_INT_ARGB);
+            Graphics2D g2 = GraphicsEnvironment.getLocalGraphicsEnvironment().createGraphics(tmp);
+            g2.setFont(font);
+            this.width = g2.getFontMetrics().charWidth(foundation.getCode());
+            this.height = g2.getFontMetrics().getHeight();
+
+            g2.dispose();
+
             synchronized (LOCK) {
                 buffer = null;
             }
@@ -139,7 +151,7 @@ public class FoundationIcon implements Icon {
     }
 
     public void setColor(@Nonnull Color color) {
-        requireNonNull(color, "Argument 'color' must not be null");
+        requireNonNull(color, "Argument 'color' must not be null.");
         this.color = color;
         synchronized (LOCK) {
             buffer = null;
@@ -147,11 +159,11 @@ public class FoundationIcon implements Icon {
     }
 
     public int getIconHeight() {
-        return size;
+        return height;
     }
 
     public int getIconWidth() {
-        return size;
+        return width;
     }
 
     private void resolveSize(String description) {
