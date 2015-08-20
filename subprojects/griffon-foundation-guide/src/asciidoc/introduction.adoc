@@ -7,3 +7,5 @@ This plugin enables toolkit specific icon support.
 
 Currently supported Foundation version is `{foundation-version}`.
 
+Griffon version: {griffon-version}
+
