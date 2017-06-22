@@ -14,6 +14,8 @@ image:https://img.shields.io/badge/donations-Patreon-orange.svg[https://www.patr
 
 ---
 
+*UPDATE*: This plugin has been superceded by link:https://github.com/aalmiray/ikonli[Ikonli]. No further updates will be posted to this project.
+
 :link_foundation: link:http://zurb.com/playground/foundation-icon-fonts-3[Zurb's Foundation Icon Fonts 3, window="_blank"]
 
 {link_foundation} gives you scalable vector icons that can instantly be customized.
